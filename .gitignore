@@ -1,0 +1,11 @@
+# Logs
+*.log
+error_log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Environment / Sensitive files (if any)
+.env

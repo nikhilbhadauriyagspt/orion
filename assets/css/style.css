@@ -1,0 +1,225 @@
+/* Global Styles */
+body {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+/* Slider Nav Arrows - Hover Only on Card Slider Row */
+#domesticSlidePrev,
+#domesticSlideNext,
+#flightSlidePrev,
+#flightSlideNext,
+#hotelSlidePrev,
+#hotelSlideNext,
+#testimonialSlidePrev,
+#testimonialSlideNext {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.domestic-slider-container:hover #domesticSlidePrev:not(:disabled),
+.domestic-slider-container:hover #domesticSlideNext:not(:disabled),
+.flight-slider-container:hover #flightSlidePrev:not(:disabled),
+.flight-slider-container:hover #flightSlideNext:not(:disabled),
+.hotel-slider-container:hover #hotelSlidePrev:not(:disabled),
+.hotel-slider-container:hover #hotelSlideNext:not(:disabled),
+.testimonials-slider-container:hover #testimonialSlidePrev:not(:disabled),
+.testimonials-slider-container:hover #testimonialSlideNext:not(:disabled) {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.domestic-slider-container:hover #domesticSlidePrev:disabled,
+.domestic-slider-container:hover #domesticSlideNext:disabled,
+.flight-slider-container:hover #flightSlidePrev:disabled,
+.flight-slider-container:hover #flightSlideNext:disabled,
+.hotel-slider-container:hover #hotelSlidePrev:disabled,
+.hotel-slider-container:hover #hotelSlideNext:disabled,
+.testimonials-slider-container:hover #testimonialSlidePrev:disabled,
+.testimonials-slider-container:hover #testimonialSlideNext:disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Hotels 2-Row Slider Track (Both rows slide horizontally) */
+.hotels-slider-track {
+  display: grid;
+  grid-template-rows: repeat(2, 196px);
+  grid-auto-flow: column;
+  grid-auto-columns: calc(100% - 8px);
+  gap: 10px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.hotels-slider-track::-webkit-scrollbar {
+  display: none;
+}
+
+    
+ 
+    @media (min-width: 768px) and (max-width: 1024px) {
+        main ,section ,footer{
+            padding-left: 60px !important;
+            padding-right: 60px !important;
+            box-sizing: border-box;
+        }
+    }
+@media (min-width: 480px) {
+  .hotels-slider-track {
+    grid-auto-columns: calc((100% - 12px) / 1.25);
+    gap: 12px;
+  }
+}
+
+@media (min-width: 640px) {
+  .hotels-slider-track {
+    grid-template-rows: repeat(2, 184px);
+    grid-auto-columns: calc((100% - 16px) / 1.55);
+    gap: 16px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hotels-slider-track {
+    grid-auto-columns: calc((100% - 32px) / 2.35);
+  }
+}
+
+@media (min-width: 1280px) {
+  .hotels-slider-track {
+    grid-auto-columns: calc((100% - 32px) / 2.5); /* 2 full cards + 1 peeking card */
+  }
+}
+
+/* Custom Scrollbar Hide Utility */
+.scrollbar-none::-webkit-scrollbar,
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none,
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Flight Cards - 2 Full Cards + 3rd Card Slightly Hidden (Peeking) */
+.flight-card-3col {
+  width: 84%;
+  min-width: 280px;
+  max-width: 320px;
+  flex-shrink: 0;
+}
+
+@media (min-width: 640px) {
+  .flight-card-3col {
+    max-width: none;
+    width: calc((100% - 20px) / 1.7);
+  }
+}
+
+@media (min-width: 1024px) {
+  .flight-card-3col {
+    max-width: none;
+    width: calc((100% - 30px) / 2.6);
+  }
+}
+
+/* Seamless Continuous Inclusions Marquee Slider (Original Vertical Icon + Label UI) */
+@keyframes inclusions-marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.inclusions-slider {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.inclusions-track {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  gap: 1.25rem; /* space between items */
+  animation: inclusions-marquee 26s linear infinite;
+}
+
+/* Pause marquee when hovering over the card or the inclusions row */
+.package-card:hover .inclusions-track,
+.inclusions-slider:hover .inclusions-track {
+  animation-play-state: paused;
+}
+
+/* Hotel Amenities Continuous Marquee Slider */
+@keyframes hotel-amenities-marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.hotel-amenities-slider {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.hotel-amenities-track {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  gap: 1.25rem;
+  animation: hotel-amenities-marquee 18s linear infinite;
+}
+
+/* Pause hotel amenities marquee when hovering over the card or strip */
+.hotel-card:hover .hotel-amenities-track,
+.hotel-amenities-slider:hover .hotel-amenities-track {
+  animation-play-state: paused;
+}
+
+/* Testimonials Carousel Track & Lightweight Cards */
+.testimonials-slider-track {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.testimonials-slider-track::-webkit-scrollbar {
+  display: none;
+}
+
+.testimonial-card-item {
+  width: 88%;
+  min-width: 275px;
+  max-width: 340px;
+  flex-shrink: 0;
+}
+
+@media (min-width: 640px) {
+  .testimonials-slider-track {
+    gap: 1.5rem;
+  }
+  .testimonial-card-item {
+    max-width: none;
+    width: calc((100% - 24px) / 2);
+  }
+}
+
+@media (min-width: 1024px) {
+  .testimonial-card-item {
+    max-width: none;
+    width: calc((100% - 48px) / 3);
+  }
+}
